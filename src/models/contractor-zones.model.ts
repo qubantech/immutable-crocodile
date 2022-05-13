@@ -5,17 +5,15 @@ import {
     Model,
     Table,
 } from 'sequelize-typescript';
-import { User } from './user.model';
-import { Role } from './role.model';
-import { Snapshot } from "./snapshot.model";
-import { ObjectClass } from "./object-class.model";
+import { Contractor } from "./contractor.model";
+import { Zone } from "./zone.model";
 
 @Table({
-    tableName: 'snapshot_object_classes',
+    tableName: 'contractor_zones',
     createdAt: false,
     updatedAt: false,
 })
-export class SnapshotObjectClasses extends Model<SnapshotObjectClasses> {
+export class ContractorZones extends Model<ContractorZones> {
     @Column({
         type: DataType.INTEGER,
         unique: true,
@@ -24,15 +22,15 @@ export class SnapshotObjectClasses extends Model<SnapshotObjectClasses> {
     })
     id: number;
 
-    @ForeignKey(() => Snapshot)
+    @ForeignKey(() => Contractor)
     @Column({
         type: DataType.INTEGER,
     })
-    snapshotId: number;
+    contractorId: number;
 
-    @ForeignKey(() => ObjectClass)
+    @ForeignKey(() => Zone)
     @Column({
         type: DataType.INTEGER,
     })
-    classId: number;
+    zoneId: number;
 }

@@ -1,10 +1,12 @@
-import { Column, DataType, Model, Table, HasMany, BelongsTo } from "sequelize-typescript";
+import { Column, DataType, Model, Table, HasMany, BelongsTo, HasOne } from "sequelize-typescript";
 import { ApiProperty } from "@nestjs/swagger";
 import { Snapshot } from "./snapshot.model";
 import { Camera } from "./camera.model";
+import { ObjectClass } from "./object-class.model";
 
 interface EventCreationAttrs {
     id: string;
+    videoUrl: string;
     startTime: string;
     endTime: string;
 }
@@ -22,6 +24,13 @@ export class Event extends Model<Event, EventCreationAttrs> {
     })
     id: number;
 
+    @ApiProperty({ example: 'www.objectstorage.com/videoid', description: 'Video fragment url' })
+    @Column({
+        type: DataType.STRING,
+        allowNull: false,
+    })
+    videoUrl: string;
+
     @ApiProperty({ example: 'Большой мусор', description: 'Event start timestamp' })
     @Column({
         type: DataType.STRING,
@@ -35,6 +44,10 @@ export class Event extends Model<Event, EventCreationAttrs> {
         allowNull: false,
     })
     endTime: string;
+
+    @ApiProperty({ example: 'Спрогнозированная категория', description: 'Category predict' })
+    @HasOne(() => ObjectClass)
+    predict: ObjectClass;
 
     @HasMany(() => Snapshot)
     snapshots: Snapshot[];

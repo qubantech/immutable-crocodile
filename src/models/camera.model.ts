@@ -1,12 +1,14 @@
-import { Column, DataType, Model, Table, HasMany } from "sequelize-typescript";
+import { Column, DataType, Model, Table, HasMany, ForeignKey } from "sequelize-typescript";
 import { ApiProperty } from "@nestjs/swagger";
 import { Event } from "./event.model";
+import { Zone } from "./zone.model";
 
 interface CameraCreationAttrs {
     id: string;
     address: string;
     latitude: number;
     longitude: number;
+    zoneId: number;
 }
 
 @Table({
@@ -42,6 +44,9 @@ export class Camera extends Model<Camera, CameraCreationAttrs> {
         allowNull: false,
     })
     longitude: number;
+
+    @ForeignKey(() => Zone)
+    zoneId: number;
 
     @HasMany(() => Event)
     events: Event[];

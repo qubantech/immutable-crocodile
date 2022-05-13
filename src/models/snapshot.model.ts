@@ -7,6 +7,7 @@ import { Event } from "./event.model";
 interface SnapshotCreationAttrs {
     id: string;
     time: string;
+    imageUrl: string;
 }
 
 @Table({
@@ -28,6 +29,13 @@ export class Snapshot extends Model<Snapshot, SnapshotCreationAttrs> {
         allowNull: false,
     })
     time: string;
+
+    @ApiProperty({ example: 'www.objectstorage.com/imageid', description: 'Image fragment url' })
+    @Column({
+        type: DataType.STRING,
+        allowNull: false,
+    })
+    imageUrl: string;
 
     @BelongsToMany(() => ObjectClass, () => SnapshotObjectClasses)
     snapshots: Snapshot[];
