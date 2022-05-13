@@ -1,5 +1,5 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { User } from '../models/users.model';
+import { User } from '../../models/users.model';
 import { InjectModel } from '@nestjs/sequelize';
 import { AuthCredentialsDto } from './dto/auth-credentials.dto';
 import { RolesService } from '../roles/roles.service';
