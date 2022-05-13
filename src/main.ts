@@ -10,6 +10,7 @@ async function bootstrap() {
       .setTitle('Garbage')
       .setDescription('API Docs')
       .setVersion('1.0.0')
+      .addTag('Docs')
       .build();
 
   const document = SwaggerModule.createDocument(app, config);

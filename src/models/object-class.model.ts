@@ -4,7 +4,6 @@ import { Snapshot } from "./snapshot.model";
 import { SnapshotObjectClasses } from "./snapshot-object-classes.model";
 
 interface ObjectClassCreationAttrs {
-    id: string;
     nameToken: string;
     description: string;
 }

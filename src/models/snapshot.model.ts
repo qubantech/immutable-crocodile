@@ -1,4 +1,4 @@
-import { BelongsToMany, Column, DataType, Model, Table, BelongsTo } from "sequelize-typescript";
+import { BelongsToMany, Column, DataType, Model, Table, BelongsTo, ForeignKey } from "sequelize-typescript";
 import { ApiProperty } from "@nestjs/swagger";
 import { ObjectClass } from "./object-class.model";
 import { SnapshotObjectClasses } from "./snapshot-object-classes.model";
@@ -40,6 +40,6 @@ export class Snapshot extends Model<Snapshot, SnapshotCreationAttrs> {
     @BelongsToMany(() => ObjectClass, () => SnapshotObjectClasses)
     snapshots: Snapshot[];
 
-    @BelongsTo(() => Event)
-    event: Event;
+    @ForeignKey(() => Event)
+    eventId: Event;
 }

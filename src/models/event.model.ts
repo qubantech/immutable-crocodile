@@ -1,4 +1,4 @@
-import { Column, DataType, Model, Table, HasMany, BelongsTo, HasOne } from "sequelize-typescript";
+import { Column, DataType, Model, Table, HasMany, BelongsTo, HasOne, ForeignKey } from "sequelize-typescript";
 import { ApiProperty } from "@nestjs/swagger";
 import { Snapshot } from "./snapshot.model";
 import { Camera } from "./camera.model";
@@ -45,13 +45,9 @@ export class Event extends Model<Event, EventCreationAttrs> {
     })
     endTime: string;
 
-    @ApiProperty({ example: 'Спрогнозированная категория', description: 'Category predict' })
-    @HasOne(() => ObjectClass)
-    predict: ObjectClass;
-
     @HasMany(() => Snapshot)
     snapshots: Snapshot[];
 
-    @BelongsTo(() => Camera)
+    @ForeignKey(() => Camera)
     camera: Camera;
 }
