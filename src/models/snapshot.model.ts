@@ -23,7 +23,7 @@ export class Snapshot extends Model<Snapshot, SnapshotCreationAttrs> {
     })
     id: number;
 
-    @ApiProperty({ example: 'ADMIN', description: 'Snapshot timestamp' })
+    @ApiProperty({ example: '18:34:22', description: 'Snapshot timestamp' })
     @Column({
         type: DataType.STRING,
         allowNull: false,
@@ -38,8 +38,8 @@ export class Snapshot extends Model<Snapshot, SnapshotCreationAttrs> {
     imageUrl: string;
 
     @BelongsToMany(() => ObjectClass, () => SnapshotObjectClasses)
-    snapshots: Snapshot[];
+    objectClasses: ObjectClass[];
 
     @ForeignKey(() => Event)
-    eventId: Event;
+    event: Event;
 }

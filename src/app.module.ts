@@ -19,6 +19,9 @@ import { ContractorsModule } from './modules/contractors/contractors.module';
 import { ServantsModule } from './modules/servants/servants.module';
 import { ZonesModule } from './modules/zones/zones.module';
 import { ObjectClassesModule } from './modules/object-classes/object-classes.module';
+import { AuditModule } from './modules/audit/audit.module';
+import { EventsModule } from './modules/events/events.module';
+import { SnapshotsModule } from './modules/snapshots/snapshots.module';
 
 
 @Module({
@@ -56,6 +59,9 @@ import { ObjectClassesModule } from './modules/object-classes/object-classes.mod
     ServantsModule,
     ZonesModule,
     ObjectClassesModule,
+    AuditModule,
+    EventsModule,
+    SnapshotsModule,
   ],
   controllers: [],
   providers: [],

@@ -9,7 +9,6 @@ import { Servant } from "../../models/servant.model";
 export class ServantsController {
   constructor(private readonly servantsService: ServantsService) {}
 
-
   @ApiOperation({ summary: 'Create servant' })
   @ApiResponse({ status: 200, type: Servant })
   @Post()
