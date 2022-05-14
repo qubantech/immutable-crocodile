@@ -28,7 +28,6 @@ export class Zone extends Model<Zone, ZoneCreationAttrs> {
     })
     nameToken: string;
 
-
     @ApiProperty({ example: 'Описание', description: 'Zone description' })
     @Column({
         type: DataType.STRING,
